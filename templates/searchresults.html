@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<!--Nicki and Teddy's searchResults.html file
+Last modified 5/15/17-->
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurants.css') }}" />
+   <script type="text/javascript" src="{{ url_for('static', filename='restaurants.js') }}"></script>
+   <link rel="shortcut icon" href="{{ url_for('static', filename='forkAndKnife.ico') }}" />
+
+   <title>Restaurant Finder</title>
+</head>
+
+<body>
+   <h1 id="searchHeader">Search Results</h1>
+
+
+   <!--Back Button-->
+   <div id="back">
+      <p>
+         <button id="back_button" onclick="goBack()">Go Back</button>
+      </p>
+   </div>
+
+   <!--Displays the tablebody in a readable table-->
+   <div id=resultsTable>
+      <table border=1>
+         {{tableBody | safe}}
+      </table>
+   </div>
+    
+</body>
+
+</html>

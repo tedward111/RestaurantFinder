@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<!--Nicki and Teddy's homePage.html file
+Last modified 5/15/17-->
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurants.css') }}" />
+   <script type="text/javascript" src="{{ url_for('static', filename='restaurants.js') }}"></script>
+   <link rel="shortcut icon" href="{{ url_for('static', filename='forkAndKnife.ico') }}" />
+   <title>Restaurant Finder</title>
+</head>
+
+<body>
+   <div id="homepage_header">
+      <h1>Restaurant Finder</h1>
+   </div>
+
+   <!--Makes a line under Restaurant Finder-->
+   <br>
+   <br>
+   <br>
+   <br>
+   <hr class="underTitle">
+
+   <!--Allows the user to select the state/country of the restaurant they want to search for-->
+   <div id="location">
+      <h2>Location</h2>
+      <h4>State/Country</h4>
+      <select id="stateSelect">
+         <option value="-">-</option>
+         <option value="AZ">Arizona (US)</option>
+         <option value="IL">Illinois (US)</option>
+         <option value="NC">North Carolina (US)</option>
+         <option value="NV">Nevada (US)</option>
+         <option value="NY">New York (US)</option>
+         <option value="OH">Ohio (US)</option>
+         <option value="PA">Pennsylvania (US)</option>
+         <option value="SC">South Carolina (US)</option>
+         <option value="WI">Wisconsin (US)</option>
+         <option value="ON">Ontario (Canada)</option>
+         <option value="QC">Quebec (Canada)</option>
+         <option value="BW">Baden-Württemberg (Germany)</option>
+         <option value="NI">Niedarsachsen (Germany)</option>
+         <option value="EDH">Edinburgh (Scotland)</option>
+         <option value="HLD">Highland (Scotland)</option>
+         <option value="MLN">Midlothian (Scotland)</option>
+         <option value="WLN">West Lothian (Scotland)</option>
+      </select>
+
+      <!--Allows the user to search by city name-->
+      <h4>City</h4>
+      <input id="citySelect" name="citySelect" type="text" placeholder="City...">
+   </div>
+
+   <!--Creates a line in between location and categories-->
+   <div class="vr">&nbsp;</div>
+
+   <div id="categories">
+      <h2>Categories</h2>
+
+      <!--Allows the user to select a cuisine type-->
+      <h4>Cuisine Type</h4>
+      <select id="cuisineSelect">
+         <option value="-">-</option>
+         <option value="Italian">Italian</option>
+         <option value="Mexican">Mexican</option>
+         <option value="Chinese">Chinese</option>
+         <option value="Thai">Thai</option>
+         <option value="Japanese">Japanese</option>
+         <option value="American (New)">American</option>
+         <option value="Southern">Southern</option>
+         <option value="Indian">Indian</option>
+         <option value="Korean">Korean</option>
+         <option value="Seafood">Seafood</option>
+         <option value="Barbecue">Barbecue</option>
+         <option value="Fast Food">Fast Food</option>
+      </select>
+
+      <!--Allows the user to search by menu items-->
+      <h4>Menu Items</h4>
+      <input id="Pizza" type="checkbox" name="feature" value="Pizza">Pizza
+      <br>
+      <input id="Burgers" type="checkbox" name="feature" value="Burgers">Burgers
+      <br>
+      <input id="Chicken Wings" type="checkbox" name="feature" value="Chicken_Wings">Chicken Wings
+      <br>
+      <input id="Noodles" type="checkbox" name="feature" value="Noodles">Noodles
+      <br>
+      <input id="Tacos" type="checkbox" name="feature" value="Tacos">Tacos
+      <br>
+      <input id="Salad" type="checkbox" name="feature" value="Salad">Salad
+      <br>
+      <input id="Sandwiches" type="checkbox" name="feature" value="Sandwiches">Sandwiches
+      <br>
+      <input id="Sushi" type="checkbox" name="feature" value="Sushi_Bar">Sushi
+      <br>
+      <input id="Bagels" type="checkbox" name="feature" value="Bagels">Bagels
+      <br>
+      <input id="Waffles" type="checkbox" name="feature" value="Waffles">Waffles
+      <br>
+      <input id="Gelato" type="checkbox" name="feature" value="Gelato">Gelato
+      <br>
+      <input id="Cupcakes" type="checkbox" name="feature" value="Cupcakes">Cupcakes
+      <br>
+   </div>
+
+   <div id="attributes">
+      <h2>Attributes</h2>
+      <!--Allows the user to search by minimum rating-->
+      <h4>Minimum Rating</h4>
+      <select id=ratingSelect>
+         <option value="-">-</option>
+         <option value="1">1.0</option>
+         <option value="1.5">1.5</option>
+         <option value="2">2.0</option>
+         <option value="2.5">2.5</option>
+         <option value="3">3.0</option>
+         <option value="3.5">3.5</option>
+         <option value="4">4.0</option>
+         <option value="4.5">4.5</option>
+         <option value="5">5.0</option>
+      </select>
+
+      <!--This code lets the user select features they want the restaurant to have-->
+      <h4>Features</h4>
+      <form action="/action_page.php">
+         <input id="Reservations" type="checkbox" name="feature" value="Reservations"> Takes Reservations
+         <br>
+         <input id="Delivers" type="checkbox" name="feature" value="Delivers"> Delivers
+         <br>
+         <input id="takeOut" type="checkbox" name="feature" value="Take-Out"> Has Take-Out
+         <br>
+         <input id="creditCards" type="checkbox" name="feature" value="creditCards"> Accepts Credit Cards
+         <br>
+         <input id="goodForKids" type="checkbox" name="feature" value="good_for_kids"> Good For Kids
+         <br>
+         <input id="dogsAllowed" type="checkbox" name="feature" value="dogsAllowed"> Dogs Allowed
+         <br>
+         <input id="outdoorSeating" type="checkbox" name="feature" value="outdoorSeating"> Has Outdoor Seating
+         <br>
+         <input id="wheelchairAccess" type="checkbox" name="feature" value="wheelchair_accessible"> Wheelchair Accessible
+         <br>
+      </form>
+
+      <!--This code lets the user select parking-->
+      <h4>Parking</h4>
+      <form action="/action_page.php">
+         <input id="validatedParking" type="checkbox" name="feature" value="validated_parking"> Validated Parking
+         <br>
+         <input id="streetParking" type="checkbox" name="feature" value="street_parking"> Street Parking
+         <br>
+         <input id="valetParking" type="checkbox" name="feature" value="valet_parking"> Valet Parking
+         <br>
+         <input id="lotParking" type="checkbox" name="feature" value="lot_parking"> Lot Parking
+         <br>
+         <input id="garageParking" type="checkbox" name="feature" value="good_for_kids"> Garage Parking
+         <br>
+      </form>
+   </div>
+
+   <!--Creates the search bar-->
+   <div id="search">
+      <p>
+         <button id="search_button" onclick="onSearchButton()">Search</button>
+      </p>
+   </div>
+
+</body>
+
+</html>

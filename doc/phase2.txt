@@ -1,0 +1,99 @@
+Nicki Polyakov
+Teddy Willard
+
+Web App Phase 2
+
+
+Create Tables
+
+CREATE TABLE restaurants (
+	id SERIAL,
+	business_id TEXT,
+	address TEXT,
+	price INT,
+	rating DEC;
+	number_review INT,
+	reservations BOOL,
+	delivers BOOL,
+	takeout BOOL,
+	credit_card BOOL,
+	good_for_kids BOOL,
+	dogs_allowed BOOL
+	outdoor_seating BOOL,
+	wheelchair BOOL,
+	validated_parking BOOL,
+	street_parking BOOL,
+	valet_parking BOOL,
+	lot_parking BOOL,
+	garage_parking BOOL,
+	hours TEXT,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE categories (
+	id SERIAL,
+	category TEXT,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE restaurants_categories (
+	restaurant_id INT,
+	category_id INT,
+);
+
+
+CREATE TABLE cities (
+	id SERIAL,
+	city TEXT,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE states (
+	id SERIAL,
+	state TEXT,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE names (
+	id SERIAL,
+	name TEXT,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE restaurants_cities(
+	restaurant_id INT,
+	city_id INT
+);
+
+CREATE TABLE restaurants_states(
+	restaurant_id INT,
+	states_id INT,
+);
+
+CREATE TABLE restaurants_names(
+	restaurant_id INT,
+	name_id INT,
+);
+
+
+Queries
+
+
+Query Type 1
+
+SYNOPSIS: Given a restaurant ID, return a list of attributes associated with the restaurant (such as its location, whether it takes reservations, etc.)
+
+QUERY (GET): /restaurants/id/<id>
+
+RESPONSE: a dictionary which describes one restaurant with keys ‘name,’ ‘city’, ‘state’, ‘address’, ‘price’, ‘rating’, ‘number_review’, ‘reservations’, ‘delivers’, ‘takeout’, ‘credit_card’, ‘good_for_kids’, ‘dogs_allowed’, ‘outdoor_seating’, ‘wheelchair’, ‘validated_parking’, ‘street_parking’, ‘valet_parking’, ‘lot_parking’, ‘garage_parking’, and ‘hours’.
+
+EXAMPLE: http://restaurantfinder.com/restaurants/id/54321
+[{‘name’: ‘Mario’s Pizza’, ‘city’=’Boston’, ‘state’=’MA’, ‘address’=’123 Cloverfield Lane’, ‘delivers’ = 1, ‘takeout’=0, ‘credit_card’=1, ‘good_for_kids’=1, ‘dogs_allowed’=0, ‘outdoor_seating’=1, ‘wheelchair’=0, ‘validated_parking’=0, ‘street_parking’=1, ‘valet_parking’=1, ‘lot_parking’=1, ‘garage_parking’=0, ‘hours’ = ‘12-7 Monday through Wednesday, closed on Sunday’}  ]
+
+Query Type 2
+QUERY (GET): /restaurants?city=<city>&state=<state>&street_parking=<street_parking>&outdoor_seating=<outdoor_seating>...
+
+RESPONSE: a list of restaurant id’s that satisfy the criteria given in the query. Query parameters don’t necessarily include but can include: city, state, delivery, takeout, credit_card, wheelchair, validated_parking, street_parking, valet_parking, lot_parking, garage_parking, rating, reservation, and good_for_kids.
+
+EXAMPLE: http://restaurantfinder.com/restaurants?city=Matthews&state=NC&lot_parking=1
+[‘Q8qsbFqIE7lwA-zkv07fxA’, ‘abcd98347294s’, ‘aoisdjasoid’, …]
